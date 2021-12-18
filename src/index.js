@@ -14,7 +14,8 @@ const Protect = ({
   inputPlaceholder,
   buttonLabel,
   styles,
-  children
+  children,
+  allow_case
 }) => {
   const chkHash = sha512.toLowerCase()
   const [fp, setFP] = React.useState(null)
@@ -46,6 +47,13 @@ const Protect = ({
     if (e.key === 'Enter') {
       handleSubmit()
     }
+  }
+  //check if allow_case is true
+  const updatePassCheckCase=(val) =>  {
+       if (allow_case!==null&&allow_case==true)
+        setPass(val.toLowerCase());
+       else
+        setPass(val);
   }
 
   React.useEffect(() => {
@@ -96,17 +104,17 @@ const Protect = ({
         <div>
           <div style={styles.wrapper} className={cssStyles.box}>
             <div style={styles.header} className={cssStyles.boxTitle}>
-              {boxTitle}
+            C {boxTitle}
             </div>
             <div>
-              <input
-                value={pass}
-                onChange={(e) => setPass(e.target.value)}
-                type='password'
-                onKeyDown={handleKeyDown}
-                placeholder={inputPlaceholder}
-                style={styles.input}
-              />
+            <input
+                 value={pass}
+                 onChange={(e) => updatePassCheckCase(e.target.value)}
+                 type='password'
+                 onKeyDown={handleKeyDown}
+                 placeholder={inputPlaceholder}
+                 style={styles.input}
+               />
             </div>
             <div className={cssStyles.boxButton}>
               <button style={styles.button} onClick={handleSubmit}>
@@ -129,6 +137,7 @@ const Protect = ({
 
 Protect.defaultProps = {
   blur: false,
+  allow_case:false,
   boxTitle: 'This page is password protected.',
   inputPlaceholder: 'Password',
   buttonLabel: 'Submit',
@@ -137,12 +146,14 @@ Protect.defaultProps = {
     button: {},
     header: {},
     wrapper: {}
-  }
+  },
+
 }
 
 Protect.propTypes = {
   sha512: PropTypes.string.isRequired,
   blur: PropTypes.bool,
+  allow_case: PropTypes.bool,
   title: PropTypes.string,
   inputPlaceholder: PropTypes.string,
   buttonLabel: PropTypes.string,

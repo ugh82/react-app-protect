@@ -2,7 +2,7 @@
 
 > Password protect a react app.
 
-> Simple password field, not a replacment for basic auth.
+> Simple password field, not a replacement for basic auth.
 
 > Not secure at all.
 
@@ -25,15 +25,15 @@ yarn add react-app-protect
 
 ## Props
 
-| Name             | Type    | Default                          | Description                     |
-| ---------------- | ------- | -------------------------------- | ------------------------------- |
-| sha512           | String  |                                  | SHA 512 Hash app                |
-| blur             | Boolean | false                            | Blur the content                |
-| boxTitle         | String  | This page is password protected. | Title of the login box          |
-| inputPlaceholder | String  | Password                         | Placeholder for the input field |
-| buttonLabel      | String  | Submit                           | Label used for the button       |
-| styles           | Object  |                                  | Styles                          |
-
+| Name             | Type    | Default                          | Description                                                              |
+| ---------------- | ------- | -------------------------------- | ------------------------------------------------------------------------ |
+| sha512           | String  |                                  | SHA 512 Hash app                                                         |
+| blur             | Boolean | false                            | Blur the content                                                         |
+| boxTitle         | String  | This page is password protected. | Title of the login box                                                   |
+| inputPlaceholder | String  | Password                         | Placeholder for the input field                                          |
+| buttonLabel      | String  | Submit                           | Label used for the button                                                |
+| styles           | Object  |                                  | Styles                                                                   |
+| allow_case       | Boolean | false                            | Allow any case (caps/small). You need to use a low case in sha 512 hash  |
 ## Usage
 
 ```jsx
